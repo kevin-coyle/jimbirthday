@@ -142,6 +142,11 @@ card.addEventListener('click', () => {
         isVideoAdded = true; // Mark video as added
         console.log("YouTube video added and background updated.");
 
+        // --- Activate Gradient Background ---
+        document.body.classList.add('gradient-active');
+        console.log("Gradient background activated.");
+        // --- End Activate Gradient Background ---
+
     }
     // On third click or later, do nothing for now
 });

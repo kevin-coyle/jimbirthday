@@ -38,17 +38,27 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /* background-color: #f0f0f0; */
-    /* Remove or comment out the static background color */
+    background-color: #f0f0f0;
+    /* Restore initial background color */
     font-family: sans-serif;
     perspective: 1000px;
     /* For 3D effect */
 
-    /* Apply the animation */
+    /* Remove animation properties from default body style */
+    /* background-size: 100% 100%; */
+    /* animation: garishGradient 5s linear infinite; */
+    transition: background-color 0.5s ease;
+    /* Optional: smooth transition to gradient */
+}
+
+/* New class to activate the gradient */
+body.gradient-active {
     background-size: 100% 100%;
     /* Ensure gradient covers the body */
     animation: garishGradient 5s linear infinite;
     /* Adjust 5s duration for speed */
+    background-color: transparent;
+    /* Ensure gradient shows through */
 }
 
 .card-container {
