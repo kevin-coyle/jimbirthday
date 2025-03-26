@@ -68,6 +68,8 @@ card.addEventListener('click', () => {
         audioContext.resume();
     }
 
+    const hintElement = card.querySelector('.hint'); // Get the hint element
+
     if (!isCardOpen) {
         // --- First Click ---
         card.classList.add('open');
@@ -89,6 +91,13 @@ card.addEventListener('click', () => {
                 alert("Could not launch confetti effect.");
             }
             // --- End Confetti ---
+
+            // --- Show Hint ---
+            if (hintElement) {
+                hintElement.style.display = 'block'; // Make the hint visible
+                console.log("Hint displayed.");
+            }
+            // --- End Show Hint ---
 
         } catch (error) {
             console.error("Error playing Web Audio tune:", error);
@@ -122,6 +131,12 @@ card.addEventListener('click', () => {
         if (messageElement) {
             messageElement.style.display = 'none';
         }
+        // --- Hide Hint ---
+        if (hintElement) {
+            hintElement.style.display = 'none'; // Hide the hint again
+            console.log("Hint hidden.");
+        }
+        // --- End Hide Hint ---
         videoContainer.style.display = 'block';
 
         // --- Add Tiled Background ---
