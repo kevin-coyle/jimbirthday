@@ -1,0 +1,183 @@
+/* Add keyframes for the gradient animation */
+@keyframes garishGradient {
+    0% {
+        background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+    }
+
+    15% {
+        background: linear-gradient(45deg, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+    }
+
+    30% {
+        background: linear-gradient(45deg, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000, #ff7f00);
+    }
+
+    45% {
+        background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000, #ff7f00, #ffff00);
+    }
+
+    60% {
+        background: linear-gradient(45deg, #0000ff, #4b0082, #9400d3, #ff0000, #ff7f00, #ffff00, #00ff00);
+    }
+
+    75% {
+        background: linear-gradient(45deg, #4b0082, #9400d3, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff);
+    }
+
+    90% {
+        background: linear-gradient(45deg, #9400d3, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082);
+    }
+
+    100% {
+        background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+    }
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* background-color: #f0f0f0; */
+    /* Remove or comment out the static background color */
+    font-family: sans-serif;
+    perspective: 1000px;
+    /* For 3D effect */
+
+    /* Apply the animation */
+    background-size: 100% 100%;
+    /* Ensure gradient covers the body */
+    animation: garishGradient 5s linear infinite;
+    /* Adjust 5s duration for speed */
+}
+
+.card-container {
+    position: relative;
+}
+
+.card {
+    width: 350px;
+    /* Adjust width as needed */
+    height: 500px;
+    /* Adjust height as needed */
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+}
+
+.card.open {
+    transform: rotateY(-180deg);
+}
+
+.card-front,
+.card-inside {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    /* Hide the back side when rotating */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    /* Ensure images don't overflow */
+}
+
+.card-front {
+    background-color: #ffffff;
+    /* Fallback color */
+    z-index: 2;
+    transform: rotateY(0deg);
+    /* Front faces forward initially */
+}
+
+.card-front img {
+    max-width: 90%;
+    max-height: 70%;
+    object-fit: contain;
+}
+
+.click-instruction {
+    margin-top: 15px;
+    font-style: italic;
+    color: #555;
+}
+
+.card-inside {
+    background-color: #fff8e1;
+    /* Light cream color for inside */
+    transform: rotateY(180deg);
+    /* Inside faces backward initially */
+    z-index: 1;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    /* Include padding in dimensions */
+    position: relative;
+    /* Needed for absolute positioning of image */
+}
+
+.card-inside img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cover the entire inside area */
+    z-index: 3;
+    /* Image on top */
+    opacity: 0.3;
+    /* Make image slightly transparent to see text */
+}
+
+.card-inside .message {
+    position: relative;
+    /* Position text relative to card-inside */
+    z-index: 4;
+    /* Text on top of the image */
+    color: #333;
+    /* Dark text color for readability */
+}
+
+.card-inside h1 {
+    color: #d14a3b;
+    /* A festive color */
+    margin-bottom: 15px;
+}
+
+.card-inside p {
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+/* Add styles for the video container and iframe */
+#video-container {
+    display: none;
+    /* Initially hidden */
+    width: 95%;
+    /* Adjust width as needed */
+    height: 70%;
+    /* Adjust height as needed */
+    position: absolute;
+    /* Position relative to card-inside */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Center the container */
+    z-index: 5;
+    /* Ensure video is above the background image */
+    background-color: #000;
+    /* Optional: black background while video loads */
+}
+
+#video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    /* Remove default iframe border */
+}

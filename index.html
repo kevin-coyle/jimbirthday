@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Jim!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="card-container">
+        <div id="card" class="card">
+            <div class="card-front">
+                <img src="card1.png" alt="Birthday Card Front - Beagle">
+                <p class="click-instruction">Click to open!</p>
+            </div>
+            <div class="card-inside">
+                <img src="card2.png" alt="Birthday Card Inside">
+                <div class="message">
+                    <h1>Happy Birthday, Jim!</h1>
+                    <p>Wishing you the best day ever!</p>
+                    <p>Lots of love,</p>
+                    <p>Kevin</p>
+                </div>
+                <div id="video-container"
+                    style="display: none; width: 100%; height: 80%; position: relative; z-index: 5;">
+                    <!-- YouTube iframe will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Birthday Music -->
+        <!-- Make sure you have a 'birthday_music.mp3' file (or similar) in the same folder -->
+        <!-- <audio id="birthdaySong" src="birthday_music.mp3" preload="auto"></audio> -->
+
+        <script src="confetti.min.js"></script>
+        <script src="script.js"></script>
+</body>
+
+</html>
